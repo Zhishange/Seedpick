@@ -86,7 +86,7 @@
   - * 13.1 为 HomeViewModel 编写 Flow 测试（验证筛选和排序逻辑）
   - * 13.2 为 EntryCard 编写 Compose 快照测试（浅色/深色主题、收藏/非收藏状态）
 
-- [ ] 14. 实现知识图谱 (Req 8)
+- [x] 14. 实现知识图谱 (Req 8)
   - 创建 BuildGraphData UseCase：从 EntryLinkDao.getAllLinks 获取所有链接关系，结合 EntryDao 条目列表，构建 ForceDirectedGraph 数据模型（nodes: List<GraphNode>, edges: List<GraphEdge>） (Req 8.1)
   - 实现力导向布局算法（ForceDirectedLayout）：基于库仑斥力（节点间）和胡克引力（连线节点间），迭代计算节点位置直到收敛 (Req 8.1)
   - 创建 GraphViewModel：管理图谱数据、选中节点状态、缩放偏移状态，调用 BuildGraphData 并运行力导向布局 (Req 8.2, 8.3, 8.5)
@@ -94,7 +94,7 @@
   - * 14.1 为力导向布局算法编写单元测试（验证节点不重叠、迭代收敛）
   - * 14.2 为 BuildGraphData 编写单元测试
 
-- [ ] 15. 实现数据导出导入 (Req 7)
+- [x] 15. 实现数据导出导入 (Req 7)
   - 创建 ExportKnowledgeBase UseCase：查询所有条目、标签、链接、附件，生成 metadata.json，将 Markdown 文件和附件打包为 ZIP (Req 7.1, 7.2)
   - 创建 ImportKnowledgeBase UseCase：解压 ZIP，解析 metadata.json，根据 UUID 判断条目是否存在决定覆盖或跳过，批量插入条目/标签/链接，复制附件文件 (Req 7.4, 7.5)
   - 创建 SettingsViewModel：管理导出/导入进度状态，调用 Export/Import UseCase
@@ -102,17 +102,17 @@
   - * 15.1 为 ExportKnowledgeBase UseCase 编写单元测试（验证生成文件格式和内容）
   - * 15.2 为 ImportKnowledgeBase UseCase 编写单元测试（验证冲突处理策略）
 
-- [ ] 16. 检查点 #5 — 确保知识图谱和导出导入功能可编译且测试通过，如有疑问请询问用户
+- [x] 16. 检查点 #5 — 确保知识图谱和导出导入功能可编译且测试通过，如有疑问请询问用户
 
-- [ ] 17. 完善设置与深色模式 (Req 9)
+- [x] 17. 完善设置与深色模式 (Req 9)
   - 完善 SettingsScreen：添加主题切换区域（跟随系统 / 浅色 / 深色三个选项的 RadioButton 组），添加导出、导入操作入口 (Req 9.1, 9.3, 9.4)
   - 在 JiweiTheme 中实现 isSystemInDarkTheme 检测和手动主题覆盖逻辑，通过 CompositionLocal 向下传递主题状态 (Req 9.2, 9.3)
   - 确保所有已实现的 Screen 和组件在深色模式下配色正确（背景、文字、卡片、分割线颜色适配） (Req 9.2)
 
-- [ ] 18. 系统级完善
+- [x] 18. 系统级完善
   - 为各 ViewModel 添加错误处理：捕获 Room 异常和 IO 异常，通过 UiState 密封类传递给 UI 层展示 Snackbar 提示
   - 添加条目删除确认对话框组件（AlertDialog），附带"同时删除附件"提示 (Req 1.4)
   - 确保 MainActivity 设置正确的 WindowInsets 处理和 Edge-to-Edge 显示
   - 创建应用图标资源（mipmap 各密度）
 
-- [ ] 19. 检查点 #6 — 最终检查，确保全部功能可编译且测试通过，如有疑问请询问用户
+- [x] 19. 检查点 #6 — 最终检查，确保全部功能可编译且测试通过，如有疑问请询问用户
