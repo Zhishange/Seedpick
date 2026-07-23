@@ -60,6 +60,9 @@ fun JiweiNavGraph(navController: NavHostController) {
                 onNavigateToEntry = { id ->
                     navController.navigate(Screen.EntryDetail.createRoute(id))
                 },
+                onCreateEntry = { title ->
+                    navController.navigate("entry/edit/null")
+                },
                 onEntryDeleted = {
                     navController.popBackStack()
                 }

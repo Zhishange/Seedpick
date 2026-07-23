@@ -64,20 +64,20 @@
   - * 9.1 为 SearchViewModel 编写 Turbine Flow 测试（验证防抖和排序逻辑）
   - * 9.2 为 SearchHighlightText 编写 Compose UI 测试
 
-- [ ] 10. 实现附件管理 (Req 4)
+- [x] 10. 实现附件管理 (Req 4)
   - 创建 AttachmentManager 工具类：处理从相册/相机获取图片（ActivityResultContracts），从文件选择器获取文件（OPEN_DOCUMENT），将文件复制到应用私有目录（context.filesDir/attachments/） (Req 4.1, 4.2, 4.3)
   - 在 EntryEditScreen 的 Markdown 工具栏中集成图片插入和文件添加按钮，插入图片后自动生成 `![描述](attachment://uuid)` 语法 (Req 4.1, 4.2)
   - 在 EntryDetailScreen 中渲染附件链接为可点击/可预览的元素，图片使用 Coil 加载显示 (Req 4.1)
   - * 10.1 为 AttachmentManager 编写单元测试（模拟文件复制操作）
 
-- [ ] 11. 实现双向链接 (Req 5)
+- [x] 11. 实现双向链接 (Req 5)
   - 创建 ParseBidirectionalLinks UseCase：使用正则 `\[\[([^\]]+)\]\]` 解析正文中所有双向链接引用 (Req 5.1)
   - 在 MarkdownParser 中将 `[[条目名称]]` 渲染为蓝色可点击的 AnnotatedString pushStringAnnotation (Req 5.1, 5.2)
   - 在 EntryDetailScreen 中处理 Annotation 点击事件：查找目标条目，存在则导航到详情页，不存在则弹窗询问是否创建 (Req 5.2, 5.4)
   - 在 EntryDetailScreen 底部实现反向链接面板：展示所有引用当前条目的条目卡片列表 (Req 5.3)
   - * 11.1 为 ParseBidirectionalLinks 编写单元测试（验证各种 [[ ]] 嵌套和边界情况）
 
-- [ ] 12. 检查点 #4 — 确保搜索、附件和双向链接功能可编译且测试通过，如有疑问请询问用户
+- [x] 12. 检查点 #4 — 确保搜索、附件和双向链接功能可编译且测试通过，如有疑问请询问用户
 
 - [ ] 13. 实现卡片浏览主页 (Req 6, Req 10)
   - 创建 HomeViewModel：管理 entries Flow、收藏筛选状态、标签筛选状态、排序模式，调用 EntryDao.getPinnedFlow 置顶收藏条目 (Req 6.4, 6.5, 10.1, 10.4)

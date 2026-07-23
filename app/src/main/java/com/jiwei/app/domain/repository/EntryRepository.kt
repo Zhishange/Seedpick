@@ -19,6 +19,8 @@ interface EntryRepository {
 
     suspend fun getEntryById(entryId: String): EntryEntity?
 
+    suspend fun findEntryByTitle(title: String): EntryEntity?
+
     suspend fun getEntryWithDetails(entryId: String): EntryWithTags?
 
     fun getAllEntries(): Flow<List<EntryEntity>>

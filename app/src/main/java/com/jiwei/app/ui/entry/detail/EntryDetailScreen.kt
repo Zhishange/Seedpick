@@ -48,11 +48,13 @@ fun EntryDetailScreen(
     onNavigateBack: () -> Unit,
     onNavigateToEdit: (String) -> Unit,
     onNavigateToEntry: (String) -> Unit,
+    onCreateEntry: (String) -> Unit,
     onEntryDeleted: () -> Unit,
     viewModel: EntryDetailViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState
     var showDeleteDialog by remember { mutableStateOf(false) }
+    var pendingLinkTitle by remember { mutableStateOf<String?>(null) }
 
     if (showDeleteDialog) {
         AlertDialog(
@@ -73,6 +75,37 @@ fun EntryDetailScreen(
                 }
             }
         )
+    }
+
+    val linkTitle = pendingLinkTitle
+    if (linkTitle != null) {
+        AlertDialog(
+            onDismissRequest = { pendingLinkTitle = null },
+            title = { Text("条目不存在") },
+            text = { Text("「${linkTitle}」尚未创建，是否立即创建？") },
+            confirmButton = {
+                TextButton(onClick = {
+                    pendingLinkTitle = null
+                    onCreateEntry(linkTitle)
+                }) {
+                    Text("创建")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { pendingLinkTitle = null }) {
+                    Text("取消")
+                }
+            }
+        )
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.events.collect { event ->
+            when (event) {
+                is DetailEvent.NavigateToEntry -> onNavigateToEntry(event.entryId)
+                is DetailEvent.PromptCreateEntry -> pendingLinkTitle = event.title
+            }
+        }
     }
 
     Scaffold(
@@ -179,7 +212,7 @@ fun EntryDetailScreen(
                                 start = offset,
                                 end = offset
                             ).firstOrNull()?.let { annotation ->
-                                onNavigateToEntry(annotation.item)
+                                viewModel.onLinkClicked(annotation.item)
                             }
                         }
                     )

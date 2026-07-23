@@ -7,11 +7,19 @@ import com.jiwei.app.domain.model.EntryWithTags
 import com.jiwei.app.domain.model.UiState
 import com.jiwei.app.domain.repository.EntryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+sealed class DetailEvent {
+    data class NavigateToEntry(val entryId: String) : DetailEvent()
+    data class PromptCreateEntry(val title: String) : DetailEvent()
+}
 
 @HiltViewModel
 class EntryDetailViewModel @Inject constructor(
@@ -23,6 +31,9 @@ class EntryDetailViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow<UiState<EntryWithTags>>(UiState.Loading)
     val uiState: StateFlow<UiState<EntryWithTags>> = _uiState.asStateFlow()
+
+    private val _events = MutableSharedFlow<DetailEvent>()
+    val events: SharedFlow<DetailEvent> = _events.asSharedFlow()
 
     init {
         loadEntry()
@@ -50,7 +61,21 @@ class EntryDetailViewModel @Inject constructor(
                 entryRepository.togglePin(entryId)
                 loadEntry()
             } catch (e: Exception) {
-                // silently fail for pin toggle
+            }
+        }
+    }
+
+    fun onLinkClicked(linkTitle: String) {
+        viewModelScope.launch {
+            try {
+                val entry = entryRepository.findEntryByTitle(linkTitle)
+                if (entry != null) {
+                    _events.emit(DetailEvent.NavigateToEntry(entry.id))
+                } else {
+                    _events.emit(DetailEvent.PromptCreateEntry(linkTitle))
+                }
+            } catch (_: Exception) {
+                _events.emit(DetailEvent.PromptCreateEntry(linkTitle))
             }
         }
     }

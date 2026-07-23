@@ -69,6 +69,10 @@ class EntryRepositoryImpl @Inject constructor(
         return entryDao.getById(entryId)
     }
 
+    override suspend fun findEntryByTitle(title: String): EntryEntity? {
+        return entryDao.getByTitle(title)
+    }
+
     override suspend fun getEntryWithDetails(entryId: String): EntryWithTags? {
         val entry = entryDao.getById(entryId) ?: return null
         val tags = entryTagDao.getTagsForEntry(entryId)
