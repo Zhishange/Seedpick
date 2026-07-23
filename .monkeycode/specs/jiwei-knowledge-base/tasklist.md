@@ -35,9 +35,9 @@
   - * 4.1 为每个 Repository 编写单元测试（MockK + JUnit）
   - * 4.2 为链接解析编写属性测试（验证 `[[ ]]` 语法解析的幂等性和边界情况）
 
-- [ ] 5. 检查点 #2 — 确保数据层和领域层可编译且测试通过，如有疑问请询问用户
+- [x] 5. 检查点 #2 — 确保数据层和领域层可编译且测试通过，如有疑问请询问用户
 
-- [ ] 6. 实现条目管理模块 (Req 1)
+- [x] 6. 实现条目管理模块 (Req 1)
   - 创建 EntryEditViewModel：管理 title、content、tags 状态，处理新建和编辑两种模式，调用 CreateEntry/UpdateEntry UseCase，保存后通过双向链接解析更新 EntryLinkEntity (Req 1.1, 1.2, 5.1)
   - 创建 Markdown 实时预览解析器（MarkdownParser）：基于 AnnotatedString，支持 H1-H6、加粗、斜体、行内代码、代码块、无序列表、引用块、`[[]]` 双向链接的语法解析和样式渲染 (Req 1.5)
   - 实现增量解析策略：仅重新解析光标所在段落，其余段落缓存渲染结果 (Req 1.5)
