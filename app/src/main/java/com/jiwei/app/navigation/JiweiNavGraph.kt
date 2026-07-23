@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.jiwei.app.ui.entry.detail.EntryDetailScreen
 import com.jiwei.app.ui.entry.edit.EntryEditScreen
+import com.jiwei.app.ui.tag.TagManageScreen
 
 @Composable
 fun JiweiNavGraph(navController: NavHostController) {
@@ -24,7 +25,12 @@ fun JiweiNavGraph(navController: NavHostController) {
         }
 
         composable(Screen.Tags.route) {
-            PlaceholderScreen("标签")
+            TagManageScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToEntry = { id ->
+                    navController.navigate(Screen.EntryDetail.createRoute(id))
+                }
+            )
         }
 
         composable(Screen.Graph.route) {

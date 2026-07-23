@@ -47,7 +47,7 @@
   - * 6.1 为 MarkdownParser 编写单元测试（覆盖所有语法类型的渲染正确性）
   - * 6.2 为 EntryEditViewModel 编写 Turbine Flow 测试
 
-- [ ] 7. 实现标签系统 (Req 2)
+- [x] 7. 实现标签系统 (Req 2)
   - 创建 BuildTagTree UseCase：将扁平 TagEntity 列表按 parentId 构建为 TreeNode 树形结构 (Req 2.5)
   - 创建 TagManageViewModel：管理标签树状态、展开/折叠节点、选中标签后展示关联条目列表 (Req 2.6)
   - 创建 TagManageScreen：树形标签列表（递归 Compose 组件，缩进 + 展开/折叠图标），选中标签后底部展示条目卡片列表 (Req 2.2, 2.6)
