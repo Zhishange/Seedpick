@@ -55,9 +55,9 @@
   - * 7.1 为 BuildTagTree UseCase 编写单元测试（验证空列表、单层、多层嵌套的树构建）
   - * 7.2 为 TagManageViewModel 编写 Flow 测试
 
-- [ ] 8. 检查点 #3 — 确保条目管理和标签功能可编译且测试通过，如有疑问请询问用户
+- [x] 8. 检查点 #3 — 确保条目管理和标签功能可编译且测试通过，如有疑问请询问用户
 
-- [ ] 9. 实现全文搜索 (Req 3)
+- [x] 9. 实现全文搜索 (Req 3)
   - 创建 SearchViewModel：管理搜索 query 状态，通过 EntryDao.searchByKeyword 执行 FTS MATCH 查询返回 Flow，支持防抖（300ms），按相关度排序 (Req 3.1, 3.3)
   - 创建 SearchScreen：顶部搜索输入框，搜索结果列表（每项显示标题、高亮匹配关键词、标签列表），空状态提示 (Req 3.2, 3.4)
   - 实现搜索结果关键词高亮组件（SearchHighlightText）：将匹配文本用 AnnotatedString 的 SpanStyle 高亮标记 (Req 3.2)

@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.jiwei.app.ui.entry.detail.EntryDetailScreen
 import com.jiwei.app.ui.entry.edit.EntryEditScreen
+import com.jiwei.app.ui.search.SearchScreen
 import com.jiwei.app.ui.tag.TagManageScreen
 
 @Composable
@@ -21,7 +22,12 @@ fun JiweiNavGraph(navController: NavHostController) {
         }
 
         composable(Screen.Search.route) {
-            PlaceholderScreen("搜索")
+            SearchScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToEntry = { id ->
+                    navController.navigate(Screen.EntryDetail.createRoute(id))
+                }
+            )
         }
 
         composable(Screen.Tags.route) {
