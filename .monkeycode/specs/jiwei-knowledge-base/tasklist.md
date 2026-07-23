@@ -25,7 +25,7 @@
   - 创建 TypeConverter 处理 Long/Date 转换和 List<String> 到 JSON 的转换
   - * 3.1 为每个 DAO 编写 Room 内存数据库插桩测试
 
-- [ ] 4. 实现领域层 — Repository 接口与实现
+- [x] 4. 实现领域层 — Repository 接口与实现
   - 创建 domain 包结构，定义 Repository 接口（EntryRepository、TagRepository、LinkRepository、AttachmentRepository、ExportRepository、ThemeRepository）
   - 实现 EntryRepositoryImpl：条目的 CRUD 操作、Flow 查询、收藏状态管理、FTS 搜索调用，保存条目时同步更新 FTS 索引和双向链接 (Req 1.2, 3.1, 6.4, 10.1)
   - 实现 TagRepositoryImpl：标签 CRUD、按名称查询自动补全、层级树构建（递归 parentId 查询）、获取标签及其所有子孙标签的条目 (Req 2.3, 2.5, 2.6)
