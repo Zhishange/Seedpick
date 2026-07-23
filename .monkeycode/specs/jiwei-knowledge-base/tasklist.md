@@ -1,6 +1,6 @@
 # 需求实施计划
 
-- [ ] 1. 创建 Android 项目基础结构
+- [x] 1. 创建 Android 项目基础结构
   - 创建 Gradle 构建文件（项目级和模块级 build.gradle.kts），配置 Kotlin、Compose、Room、Hilt、Navigation 等依赖
   - 创建 AndroidManifest.xml，声明应用权限（INTERNET、存储读写）
   - 创建 Application 类并添加 @HiltAndroidApp 注解
@@ -11,9 +11,9 @@
   - * 1.1 为 Gradle 依赖版本编写 Catalog 验证脚本
   - * 1.2 为 Hilt 模块编写编译时验证测试
 
-- [ ] 2. 检查点 #1 — 确保项目结构可编译，如有疑问请询问用户
+- [x] 2. 检查点 #1 — 确保项目结构可编译，如有疑问请询问用户
 
-- [ ] 3. 实现数据层 — Room 数据库
+- [x] 3. 实现数据层 — Room 数据库
   - 创建 EntryEntity、TagEntity、EntryTagCrossRef、EntryLinkEntity、AttachmentEntity 五个实体类 (Req 1, 2, 4, 5)
   - 创建 EntryFts FTS4 虚拟表，包含 title、content、tagNames 列 (Req 3)
   - 创建 EntryDao（insert、update、delete、getById、getAllFlow、getPinnedFlow、searchByKeyword），搜索方法使用 FTS MATCH 查询 (Req 1.2, 3.1, 6.4)
