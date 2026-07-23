@@ -79,7 +79,7 @@
 
 - [x] 12. 检查点 #4 — 确保搜索、附件和双向链接功能可编译且测试通过，如有疑问请询问用户
 
-- [ ] 13. 实现卡片浏览主页 (Req 6, Req 10)
+- [x] 13. 实现卡片浏览主页 (Req 6, Req 10)
   - 创建 HomeViewModel：管理 entries Flow、收藏筛选状态、标签筛选状态、排序模式，调用 EntryDao.getPinnedFlow 置顶收藏条目 (Req 6.4, 6.5, 10.1, 10.4)
   - 创建 EntryCard 组件：卡片式布局展示标题、正文摘要（截取前 80 字）、标签列表（Chip 样式），收藏条目显示星标标识 (Req 6.2, 10.2)
   - 创建 HomeScreen：LazyVerticalStaggeredGrid 瀑布流卡片布局，顶部标签筛选栏（水平滚动 Chip 列表），排序切换按钮（时间/标题），FAB 新建按钮 (Req 6.1, 6.3, 6.4, 6.5, 10.4)
